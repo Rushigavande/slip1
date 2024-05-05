@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Form</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+}
+form {
+max-width: 300px;
+margin: 0 auto;
+}
+input[type="text"],
+input[type="password"],
+input[type="submit"] {
+width: 100%;
+padding: 10px;
+margin: 5px 0;
+box-sizing: border-box;
+}
+input[type="submit"] {
+background-color: #4CAF50;
+color: white;
+border: none;
+cursor: pointer;
+}
+input[type="submit"]:hover {
+background-color: #45a049;
+}
+.error {
+color: red;
+}
+</style>
+</head>
+<body>
+<form id="loginForm" onsubmit="return validateForm()">
+<label for="email">Email:</label>
+<input type="text" id="email" name="email" placeholder="Enter your email" required>
+<label for="password">Password:</label>
+<input type="password" id="password" name="password" placeholder="Enter your password"
+required>
+<input type="submit" value="Login">
+</form>
+<script>
+function validateForm() {
+var email = document.getElementById('email').value;
+var password = document.getElementById('password').value;
+var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+if (!emailPattern.test(email)) {
+document.getElementById('email').classList.add('error');
+return false;
+} else {
+document.getElementById('email').classList.remove('error');
+}
+// Password should be at least 8 characters long
+if (password.length < 8) {
+document.getElementById('password').classList.add('error');
+return false;
+} else {
+document.getElementById('password').classList.remove('error');
+}
+return true;
+}
+</script>
+</body>
+</html>

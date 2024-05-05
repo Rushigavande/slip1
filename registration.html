@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Registration Form</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+}
+form {
+max-width: 300px;
+margin: 0 auto;
+}
+input[type="text"],
+input[type="number"],
+input[type="submit"] {
+width: 100%;
+padding: 10px;
+margin: 5px 0;
+box-sizing: border-box;
+}
+input[type="submit"] {
+background-color: #4CAF50;
+color: white;
+border: none;
+cursor: pointer;
+}
+input[type="submit"]:hover {
+background-color: #45a049;
+}
+.error {
+color: red;
+}
+</style>
+</head>
+<body>
+<form id="registrationForm" onsubmit="return validateForm()">
+<label for="firstName">First Name:</label>
+<input type="text" id="firstName" name="firstName" placeholder="Enter your first name"
+required>
+<label for="lastName">Last Name:</label>
+<input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
+<label for="age">Age:</label>
+<input type="number" id="age" name="age" placeholder="Enter your age" required>
+<input type="submit" value="Register">
+</form>
+<script>
+function validateForm() {
+var firstName = document.getElementById('firstName').value;
+var lastName = document.getElementById('lastName').value;
+var age = parseInt(document.getElementById('age').value);
+var namePattern = /^[a-zA-Z]+$/;
+if (!namePattern.test(firstName)) {
+document.getElementById('firstName').classList.add('error');
+return false;
+} else {
+document.getElementById('firstName').classList.remove('error');
+}
+if (!namePattern.test(lastName)) {
+document.getElementById('lastName').classList.add('error');
+return false;
+} else {
+document.getElementById('lastName').classList.remove('error');
+}
+// Age should be between 18 and 50
+if (age < 18 || age > 50 || isNaN(age)) {
+document.getElementById('age').classList.add('error');
+return false;
+} else {
+document.getElementById('age').classList.remove('error');
+}
+return true;
+}
+</script>
+</body>
+</html>
